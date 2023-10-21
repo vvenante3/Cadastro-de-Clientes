@@ -4,9 +4,12 @@
     box-sizing: border-box;
 }
 
-/* :root{
-
-} */
+:root{
+    --primary-color: #FFBA00;
+    --secundary-color: #FFF1CC;
+    --shadow-color: #CCC;
+    --text-color: #FFF;
+}
 
 body{
     min-height: 100vh;
@@ -24,7 +27,10 @@ header{
     box-shadow: 0 1px 2px var(--shadow-color);
 }
 
-/* .header-title */
+.header-title{
+    color: black;
+    font-size: 2rem;
+}
 
 main{
     flex-grow: 1;
