@@ -19,6 +19,8 @@ const setLocalStorage = (dbClient) => localStorage.setItem("db_client", JSON.str
                                                             //transforma o objeto em String
     //CRUD - criar FUNÇÕES em criar(create), ler(read), atualizr(update) e deletar(delete)
 
+// ===========  READ  ============================================
+const readClient = () => getLocalStorage();
 // ===========  CREATE  ============================================
     const createClient = (client) => {
     const dbClient = getLocalStorage(); //pegar os dados do cliente
