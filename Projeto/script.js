@@ -19,9 +19,21 @@ const setLocalStorage = (dbClient) => localStorage.setItem("db_client", JSON.str
                                                             //transforma o objeto em String
     //CRUD - criar FUNÇÕES em criar(create), ler(read), atualizr(update) e deletar(delete)
 
+// ===========  DELETE  ==========================================
+    const deleteClient = (index) => {
+        const dbClient = readClient();
+        dbClient.splice(index,1); //deletando o registro
+        setLocalStorage(dbClient); //atualizando o banco
+    }
+// ===========  UPDATE  ==========================================
+const updateClient = (index, client) => { //o índice de cada registro
+    const dbClient = readClient();
+    dbClient[index] = client;
+    setLocalStorage(dbClient)
+}
 // ===========  READ  ============================================
 const readClient = () => getLocalStorage();
-// ===========  CREATE  ============================================
+// ===========  CREATE  ==========================================
     const createClient = (client) => {
     const dbClient = getLocalStorage(); //pegar os dados do cliente
     dbClient.push (client); //enviar os dados do cliete
@@ -31,6 +43,7 @@ const readClient = () => getLocalStorage();
 const camposValidos = () => {
     return document.getElementById('form').reportValidity() // verifica se todas as regras forem compridas
 }
+
 
     //interação
 const saveClient = () => {
