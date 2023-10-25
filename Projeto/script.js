@@ -14,12 +14,16 @@ const tempClient = {
     cidade: "Curitiba"
 }
 
+const getLocalStorage = () => JSON.parse(localStorage.getItem('db_client')) ?? [];//Pega os dados (convertidos em objeto) que já tem no banco de dados e abaixo acrescenta mais dados sem substituir.
+const setLocalStorage = (dbClient) => localStorage.setItem("db_client", JSON.stringify(dbClient)); //cria um "banco de dados(cliente)" e envia o valor de client 
+                                                            //transforma o objeto em String
     //CRUD - criar FUNÇÕES em criar(create), ler(read), atualizr(update) e deletar(delete)
-const createCliente = (client) => {
-    const db_client = JSON.parse(localStorage.getItem('db_client')); //Pega os dados (convertidos em objeto) que já tem no banco de dados e abaixo acrescenta mais dados sem substituir.
-    db_client.push (client);
-    localStorage.setItem("db_client", JSON.stringify(db_client)) //cria um "banco de dados(cliente)" e envia o valor de client
-                                //transforma o objeto em String
+
+// ===========  CREATE  ============================================
+    const createClient = (client) => {
+    const dbClient = getLocalStorage(); //pegar os dados do cliente
+    dbClient.push (client); //enviar os dados do cliete
+    setLocalStorage(dbClient);
 }
 
 const camposValidos = () => {
@@ -29,10 +33,15 @@ const camposValidos = () => {
     //interação
 const saveClient = () => {
     if (camposValidos()) { //verifica se há campos vazios
-        console.log("cadastrando cliente");
+        const client = { //construindo o JSON abaixo:
+            nome: document.getElementById('nome').value,
+            email: document.getElementById('email').value,
+            celular: document.getElementById('celular').value,
+            cidade: document.getElementById('cidade').value
+        }
+        createClient(client);
     }
 }
-
 
     //EVENTOS
 document.getElementById('cadastrarCliente')
