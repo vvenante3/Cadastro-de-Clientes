@@ -1,4 +1,5 @@
 'use strict'
+//PS: primeiro foi realizado a estruturação do CRUD.JS utilizando o console web e após iniciou a etapa da interação com o layout do sistema.
 
 const openModal = () => document.getElementById('modal')
     .classList.add('active');
@@ -63,6 +64,8 @@ document.getElementById('cadastrarCliente')
     .addEventListener('click', openModal);
 
 document.getElementById('modalClose')
+    .addEventListener('click', closeModal);
+    document.getElementById('cancelar')
     .addEventListener('click', closeModal);
 
 document.getElementById('salvar')
